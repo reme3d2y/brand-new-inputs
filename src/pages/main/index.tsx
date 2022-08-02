@@ -6,19 +6,7 @@ import styles from "./index.module.css";
 import { SettingsPanel } from "./settings-panel";
 import { InputsForm } from "./inputs-form";
 
-import click from "!!css-loader!postcss-loader!@alfalab/core-components/themes/click.css";
-import mobile from "!!css-loader!postcss-loader!@alfalab/core-components/themes/mobile.css";
-import newTheme from "!!css-loader!postcss-loader!../../themes/new.css";
-
-import bluetint from "@alfalab/core-components/vars/colors-bluetint";
 import { AppContext } from "../../App";
-
-const themes = {
-    click,
-    mobile,
-    new: newTheme,
-    default: "",
-} as const;
 
 export function MainPage() {
     const [open, setOpen] = useState(false);
@@ -27,10 +15,6 @@ export function MainPage() {
 
     return (
         <>
-            <style>{themes[context.settings.theme].toString()}</style>
-
-            {context.settings.colors === "bluetint" && <style>{bluetint}</style>}
-
             <div className={styles.main}>
                 <Typography.Title tag="h1" view="medium" font="system" className={styles.title}>
                     Тест инпутов

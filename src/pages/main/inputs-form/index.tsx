@@ -1,7 +1,9 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode, useContext, useEffect, useState } from "react";
 import cn from "classnames";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { RadioGroup } from "@alfalab/core-components/radio-group";
+import { Tag } from "@alfalab/core-components/tag";
 import { Button } from "@alfalab/core-components/button";
 import { Input } from "@alfalab/core-components/input";
 import { DateInput } from "@alfalab/core-components/date-input";
@@ -11,6 +13,7 @@ import { Switch } from "@alfalab/core-components/switch";
 import { WithNewStyles } from "../../../components/with-new-styles";
 
 import styles from "./index.module.css";
+import { AppContext } from "../../../App";
 
 function Row({ children, offset = "medium" }: { children: ReactNode; offset?: "medium" | "large" }) {
     return <div className={cn(styles.row, styles[`offset-${offset}`])}>{children}</div>;
@@ -30,10 +33,11 @@ const citiesOptions = [
 ];
 
 const FormSchema = Yup.object().shape({
-    surname: Yup.string().required("Укажите фамилию"),
-    firstname: Yup.string().required("Укажите имя"),
+    surname: Yup.string().required("Укажите фамилию").min(100, "Некорректная фамилия"),
+    firstname: Yup.string().required("Укажите имя").min(100, "Некорректное имя"),
     middlename: Yup.string(),
     dob: Yup.string().required("Укажите дату"),
+    gender: Yup.string().required("Укажите пол"),
     birthplace: Yup.string().required("Укажите место рождения"),
     passport: Yup.string().required("Укажите серию и номер паспорта"),
     passportCode: Yup.string().required("Укажите код подразделения"),
@@ -43,7 +47,9 @@ const FormSchema = Yup.object().shape({
 });
 
 export function InputsForm() {
-    const [passportFieldsDisabled, setPassportFieldsDisabled] = useState(true);
+    const context = useContext(AppContext);
+
+    const [passportFieldsEnabled, setPassportFieldsEnabled] = useState(false);
 
     const formik = useFormik({
         initialValues: {
@@ -52,6 +58,7 @@ export function InputsForm() {
             middlename: "",
             dob: "",
             birthplace: "",
+            gender: "",
             passport: "",
             passportCode: "",
             passportDate: "",
@@ -70,7 +77,9 @@ export function InputsForm() {
         formik.setFieldError("passportDate", undefined);
         formik.setFieldError("passportAddress", undefined);
         formik.setFieldError("address", undefined);
-    }, [passportFieldsDisabled]);
+    }, [passportFieldsEnabled]);
+
+    const inputSize = context.settings.labelPosition === "inside" ? "m" : "s";
 
     return (
         <div>
@@ -79,8 +88,9 @@ export function InputsForm() {
                     <WithNewStyles>
                         <Input
                             label="Фамилия"
+                            placeholder="Введите фамилию"
                             block={true}
-                            size="m"
+                            size={inputSize}
                             name="surname"
                             value={formik.values.surname}
                             onChange={formik.handleChange}
@@ -91,8 +101,9 @@ export function InputsForm() {
                     <WithNewStyles>
                         <Input
                             label="Имя"
+                            placeholder="Введите имя"
                             block={true}
-                            size="m"
+                            size={inputSize}
                             name="firstname"
                             value={formik.values.firstname}
                             onChange={formik.handleChange}
@@ -105,8 +116,9 @@ export function InputsForm() {
                     <WithNewStyles>
                         <Input
                             label="Отчество"
+                            placeholder="Введите отчество"
                             block={true}
-                            size="m"
+                            size={inputSize}
                             name="middlename"
                             value={formik.values.middlename}
                             onChange={formik.handleChange}
@@ -118,7 +130,7 @@ export function InputsForm() {
                         <DateInput
                             label="Дата рождения"
                             block={true}
-                            size="m"
+                            size={inputSize}
                             name="dob"
                             value={formik.values.dob}
                             onChange={(_, { value }) => formik.setFieldValue("dob", value)}
@@ -130,7 +142,7 @@ export function InputsForm() {
                 <Row>
                     <WithNewStyles>
                         <Select
-                            size="m"
+                            size={inputSize}
                             label="Место рождения"
                             block={true}
                             options={citiesOptions}
@@ -146,20 +158,39 @@ export function InputsForm() {
                 </Row>
 
                 <Row>
+                    <RadioGroup
+                        label="Укажите пол"
+                        onChange={(_, payload: any) => {
+                            formik.setFieldValue(payload.name, payload.value);
+                        }}
+                        direction="horizontal"
+                        type="tag"
+                        name="gender"
+                        value={formik.values.gender}
+                        error={formik.touched.gender && formik.errors.gender}
+                    >
+                        <Tag value="male" size="xxs">
+                            Мужской
+                        </Tag>
+                        <Tag value="female" size="xxs">
+                            Женский
+                        </Tag>
+                    </RadioGroup>
+                </Row>
+
+                <Row>
                     <WithNewStyles>
                         <MaskedInput
                             label="Серия и номер паспорта"
                             mask={[/\d/, /\d/, /\d/, /\d/, " ", /\d/, /\d/, /\d/, /\d/, /\d/, /\d/]}
                             placeholder="0000 000000"
                             block={true}
-                            disabled={passportFieldsDisabled}
-                            size="m"
+                            disabled={!passportFieldsEnabled}
+                            size={inputSize}
                             name="passport"
                             value={formik.values.passport}
                             onChange={formik.handleChange}
-                            error={
-                                !passportFieldsDisabled && formik.touched.passport && formik.errors.passport
-                            }
+                            error={passportFieldsEnabled && formik.touched.passport && formik.errors.passport}
                         />
                     </WithNewStyles>
                 </Row>
@@ -171,13 +202,13 @@ export function InputsForm() {
                             mask={[/\d/, /\d/, /\d/, "-", /\d/, /\d/, /\d/]}
                             placeholder="000-000"
                             block={true}
-                            disabled={passportFieldsDisabled}
-                            size="m"
+                            disabled={!passportFieldsEnabled}
+                            size={inputSize}
                             name="passportCode"
                             value={formik.values.passportCode}
                             onChange={formik.handleChange}
                             error={
-                                !passportFieldsDisabled &&
+                                passportFieldsEnabled &&
                                 formik.touched.passportCode &&
                                 formik.errors.passportCode
                             }
@@ -188,13 +219,13 @@ export function InputsForm() {
                         <DateInput
                             label="Дата выдачи"
                             block={true}
-                            disabled={passportFieldsDisabled}
-                            size="m"
+                            disabled={!passportFieldsEnabled}
+                            size={inputSize}
                             name="passportDate"
                             value={formik.values.passportDate}
                             onChange={(_, { value }) => formik.setFieldValue("passportDate", value)}
                             error={
-                                !passportFieldsDisabled &&
+                                passportFieldsEnabled &&
                                 formik.touched.passportDate &&
                                 formik.errors.passportDate
                             }
@@ -206,14 +237,15 @@ export function InputsForm() {
                     <WithNewStyles>
                         <Input
                             label="Документ выдан"
+                            placeholder="Укажите место выдачи документа"
                             block={true}
-                            disabled={passportFieldsDisabled}
-                            size="m"
+                            disabled={!passportFieldsEnabled}
+                            size={inputSize}
                             name="passportAddress"
                             value={formik.values.passportAddress}
                             onChange={formik.handleChange}
                             error={
-                                !passportFieldsDisabled &&
+                                passportFieldsEnabled &&
                                 formik.touched.passportAddress &&
                                 formik.errors.passportAddress
                             }
@@ -225,22 +257,23 @@ export function InputsForm() {
                     <WithNewStyles>
                         <Input
                             label="Место регистрации"
+                            placeholder="Укажите адрес регистрации"
                             block={true}
-                            disabled={passportFieldsDisabled}
-                            size="m"
+                            disabled={!passportFieldsEnabled}
+                            size={inputSize}
                             name="address"
                             value={formik.values.address}
                             onChange={formik.handleChange}
-                            error={!passportFieldsDisabled && formik.touched.address && formik.errors.address}
+                            error={passportFieldsEnabled && formik.touched.address && formik.errors.address}
                         />
                     </WithNewStyles>
                 </Row>
 
                 <Row offset="large">
                     <Switch
-                        label="Задисейблить паспортные данные"
-                        checked={passportFieldsDisabled}
-                        onChange={() => setPassportFieldsDisabled((d) => !d)}
+                        label="Раздисейблить паспортные данные"
+                        checked={passportFieldsEnabled}
+                        onChange={() => setPassportFieldsEnabled((d) => !d)}
                     />
                 </Row>
 

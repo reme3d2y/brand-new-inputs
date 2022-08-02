@@ -2,11 +2,26 @@ import React, { useMemo, useState } from "react";
 import { hot } from "react-hot-loader/root";
 import { MainPage } from "./pages/main";
 
+import click from "!!css-loader!postcss-loader!@alfalab/core-components/themes/click.css";
+import mobile from "!!css-loader!postcss-loader!@alfalab/core-components/themes/mobile.css";
+import newTheme from "!!css-loader!postcss-loader!./themes/new.css";
+import newBluetintTheme from "!!css-loader!postcss-loader!./themes/new-bluetint.css";
+
+import bluetint from "@alfalab/core-components/vars/colors-bluetint";
+
 export const defaultSettings: Settings = {
     theme: "default",
     labelPosition: "inside",
     colors: "indigo",
 };
+
+const themes = {
+    click,
+    mobile,
+    new: newTheme,
+    newBluetint: newBluetintTheme,
+    default: "",
+} as const;
 
 type AppContext = {
     settings: Settings;
@@ -49,6 +64,14 @@ function App() {
 
     return (
         <AppContext.Provider value={contextValue}>
+            <style>{themes[settings.theme].toString()}</style>
+
+            {settings.theme === "new" && settings.colors === "bluetint" && (
+                <style>{themes.newBluetint.toString()}</style>
+            )}
+
+            {settings.colors === "bluetint" && <style>{bluetint}</style>}
+
             <MainPage />
         </AppContext.Provider>
     );

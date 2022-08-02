@@ -44,7 +44,7 @@ export function WithNewStyles({ children }: Props) {
 
     return (
         <label className={styles.wrapper}>
-            <Typography.Text view="component" color="secondary" className={styles.label}>
+            <Typography.Text view="component" className={styles.label}>
                 {renderLabel()}
             </Typography.Text>
             {React.cloneElement(children, { label: undefined, error: renderError() })}
