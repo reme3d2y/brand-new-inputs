@@ -1,0 +1,19 @@
+.label {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.wrapper {
+    display: block;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.iconWithText {
+    display: flex;
+    align-items: center;
+
+    & > *:first-child {
+        margin-right: var(--gap-3xs);
+    }
+}

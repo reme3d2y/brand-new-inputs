@@ -1,0 +1,35 @@
+:root {
+    /* FORM CONTROL */
+    --form-control-border-bottom: 0;
+    --form-control-focus-border-bottom: 0;
+    --form-control-error-border-bottom: 0;
+    --form-control-disabled-border-bottom: 0;
+
+    --input-error-icon: none;
+
+    --form-control-border-radius: 10px;
+
+    --form-control-bg-color: var(--color-light-bg-primary-inverted-alpha-10);
+    --form-control-focus-bg-color: var(--color-light-bg-primary-inverted-alpha-7);
+    --form-control-hover-bg-color: var(--color-light-bg-primary-inverted-alpha-7);
+
+    --form-control-label-color: rgba(11, 31, 53, 0.64);
+    --form-control-hint-color: rgba(11, 31, 53, 0.64);
+
+    --input-placeholder-color: rgba(11, 31, 53, 0.64);
+    --input-focus-placeholder-color: var(--color-light-bg-primary-inverted-alpha-40);
+    --input-with-label-placeholder-color: var(--color-light-bg-primary-inverted-alpha-40);
+
+    --form-control-disabled-bg-color: var(--color-light-bg-primary-inverted-alpha-10);
+    --form-control-disabled-color: var(--color-light-text-primary);
+
+    --form-control-error-shadow: none;
+
+    /* BUTTON */
+    --button-primary-base-bg-color: var(--color-light-bg-secondary-inverted);
+    --button-primary-hover-bg-color: var(--color-light-bg-secondary-inverted-tint-15);
+    --button-primary-active-bg-color: var(--color-light-bg-secondary-inverted-tint-20);
+    --button-primary-disabled-bg-color: var(--color-light-bg-secondary-inverted);
+    --button-primary-disabled-color: var(--color-light-text-tertiary-inverted-transparent);
+    --button-primary-color: var(--color-light-text-primary-inverted);
+}

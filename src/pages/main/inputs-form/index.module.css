@@ -1,0 +1,34 @@
+.disableSwitch {
+    margin-top: var(--gap-xs);
+}
+
+.row {
+    & > * {
+        margin-top: var(--gap-xl);
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    @media (min-width: 768px) {
+        display: flex;
+
+        & > * {
+            margin-left: var(--gap-xl);
+            margin-top: 0;
+
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+    }
+
+    &.offset-medium {
+        margin-top: var(--gap-xl);
+    }
+
+    &.offset-large {
+        margin-top: var(--gap-2xl);
+    }
+}

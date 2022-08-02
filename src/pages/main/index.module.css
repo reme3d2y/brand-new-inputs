@@ -1,0 +1,9 @@
+.main {
+    max-width: 558px;
+    margin: 0 auto;
+}
+
+.text {
+    margin-top: var(--gap-xs);
+    margin-bottom: 0;
+}
