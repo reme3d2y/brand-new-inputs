@@ -43,7 +43,7 @@ const FormSchema = Yup.object().shape({
 });
 
 export function InputsForm() {
-    const [passportFieldsDisabled, setPassportFieldsDisabled] = useState(false);
+    const [passportFieldsDisabled, setPassportFieldsDisabled] = useState(true);
 
     const formik = useFormik({
         initialValues: {
@@ -65,13 +65,11 @@ export function InputsForm() {
     });
 
     useEffect(() => {
-        if (passportFieldsDisabled) {
-            formik.setFieldError("passport", undefined);
-            formik.setFieldError("passportCode", undefined);
-            formik.setFieldError("passportDate", undefined);
-            formik.setFieldError("passportAddress", undefined);
-            formik.setFieldError("address", undefined);
-        }
+        formik.setFieldError("passport", undefined);
+        formik.setFieldError("passportCode", undefined);
+        formik.setFieldError("passportDate", undefined);
+        formik.setFieldError("passportAddress", undefined);
+        formik.setFieldError("address", undefined);
     }, [passportFieldsDisabled]);
 
     return (
@@ -147,14 +145,6 @@ export function InputsForm() {
                     </WithNewStyles>
                 </Row>
 
-                <Row offset="large">
-                    <Switch
-                        label="Задисейблить паспортные данные"
-                        checked={passportFieldsDisabled}
-                        onChange={() => setPassportFieldsDisabled((d) => !d)}
-                    />
-                </Row>
-
                 <Row>
                     <WithNewStyles>
                         <MaskedInput
@@ -167,7 +157,9 @@ export function InputsForm() {
                             name="passport"
                             value={formik.values.passport}
                             onChange={formik.handleChange}
-                            error={formik.touched.passport && formik.errors.passport}
+                            error={
+                                !passportFieldsDisabled && formik.touched.passport && formik.errors.passport
+                            }
                         />
                     </WithNewStyles>
                 </Row>
@@ -184,7 +176,11 @@ export function InputsForm() {
                             name="passportCode"
                             value={formik.values.passportCode}
                             onChange={formik.handleChange}
-                            error={formik.touched.passportCode && formik.errors.passportCode}
+                            error={
+                                !passportFieldsDisabled &&
+                                formik.touched.passportCode &&
+                                formik.errors.passportCode
+                            }
                         />
                     </WithNewStyles>
 
@@ -197,7 +193,11 @@ export function InputsForm() {
                             name="passportDate"
                             value={formik.values.passportDate}
                             onChange={(_, { value }) => formik.setFieldValue("passportDate", value)}
-                            error={formik.touched.passportDate && formik.errors.passportDate}
+                            error={
+                                !passportFieldsDisabled &&
+                                formik.touched.passportDate &&
+                                formik.errors.passportDate
+                            }
                         />
                     </WithNewStyles>
                 </Row>
@@ -212,7 +212,11 @@ export function InputsForm() {
                             name="passportAddress"
                             value={formik.values.passportAddress}
                             onChange={formik.handleChange}
-                            error={formik.touched.passportAddress && formik.errors.passportAddress}
+                            error={
+                                !passportFieldsDisabled &&
+                                formik.touched.passportAddress &&
+                                formik.errors.passportAddress
+                            }
                         />
                     </WithNewStyles>
                 </Row>
@@ -227,9 +231,17 @@ export function InputsForm() {
                             name="address"
                             value={formik.values.address}
                             onChange={formik.handleChange}
-                            error={formik.touched.address && formik.errors.address}
+                            error={!passportFieldsDisabled && formik.touched.address && formik.errors.address}
                         />
                     </WithNewStyles>
+                </Row>
+
+                <Row offset="large">
+                    <Switch
+                        label="Задисейблить паспортные данные"
+                        checked={passportFieldsDisabled}
+                        onChange={() => setPassportFieldsDisabled((d) => !d)}
+                    />
                 </Row>
 
                 <Row offset="large">
