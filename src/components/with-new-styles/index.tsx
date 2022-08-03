@@ -39,7 +39,7 @@ export function WithNewStyles({ children }: Props) {
         );
     };
 
-    if (context.settings.labelPosition === "inside")
+    if (context.settings.labelPosition === "inside" && context.settings.theme !== "mobile")
         return React.cloneElement(children, { label: renderLabel(), error: renderError() });
 
     return (

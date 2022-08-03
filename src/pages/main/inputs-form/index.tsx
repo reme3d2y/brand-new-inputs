@@ -80,7 +80,7 @@ export function InputsForm() {
         formik.setFieldError("address", undefined);
     }, [passportFieldsEnabled]);
 
-    const inputSize = context.settings.labelPosition === "inside" ? "m" : "s";
+    const inputSize = context.settings.labelPosition === "inside" && context.settings.theme !== "mobile" ? "m" : "s";
 
     return (
         <div>
