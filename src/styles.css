@@ -19,13 +19,17 @@
     font-style: normal;
 }
 
-html {
-    height: 100%;
+* {
+    margin: 0;
+    padding: 0;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
 body {
     overflow: auto;
-    min-height: 100%;
+    min-height: 100vh;
     margin: 0 auto;
     padding: 120px var(--gap-m);
     font-family: var(--font-family-system);
@@ -35,6 +39,6 @@ body {
 
     @media (max-width: 767px) {
         padding-top: var(--gap-m);
-        padding-bottom: var(--gap-m);
+        padding-bottom: var(--gap-2xl);
     }
 }
