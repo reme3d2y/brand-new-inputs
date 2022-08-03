@@ -87,7 +87,9 @@ const config = {
                     </html>`,
             filename: "index.html",
         }),
-        new MiniCssExtractPlugin(),
+        new MiniCssExtractPlugin({
+            filename: "[name].[contenthash].css",
+        }),
         new CleanWebpackPlugin(),
     ],
     resolve: {
