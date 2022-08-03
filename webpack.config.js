@@ -7,7 +7,7 @@ const config = {
     entry: ["react-hot-loader/patch", "./src/index.tsx"],
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "bundle.js",
+        filename: "[name].[contenthash].js",
     },
     module: {
         rules: [
