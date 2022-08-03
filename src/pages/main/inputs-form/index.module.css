@@ -48,7 +48,11 @@
     color: var(--new-secondary);
     font-size: 16px;
     line-height: 20px;
-    margin: 0 0 6px;
+    margin: 0 0 -18px;
+
+    @media (min-width: 768px) {
+        margin: 0 0 6px;
+    }
 }
 
 input[class*=radio-group__hiddenInput] {
