@@ -14,6 +14,7 @@ import { WithNewStyles } from "../../../components/with-new-styles";
 
 import styles from "./index.module.css";
 import { AppContext } from "../../../App";
+import { Typography } from "@alfalab/core-components/typography";
 
 function Row({ children, offset = "medium" }: { children: ReactNode; offset?: "medium" | "large" }) {
     return <div className={cn(styles.row, styles[`offset-${offset}`])}>{children}</div>;
@@ -37,7 +38,7 @@ const FormSchema = Yup.object().shape({
     firstname: Yup.string().required("Укажите имя").min(100, "Некорректное имя"),
     middlename: Yup.string(),
     dob: Yup.string().required("Укажите дату"),
-    gender: Yup.string().required("Укажите пол"),
+    gender: Yup.string(),
     birthplace: Yup.string().required("Укажите место рождения"),
     passport: Yup.string().required("Укажите серию и номер паспорта"),
     passportCode: Yup.string().required("Укажите код подразделения"),
@@ -146,6 +147,7 @@ export function InputsForm() {
                             label="Место рождения"
                             block={true}
                             options={citiesOptions}
+                            placeholder="Выберите место рождения"
                             allowUnselect={true}
                             name="birthplace"
                             selected={formik.values.birthplace}
@@ -158,8 +160,10 @@ export function InputsForm() {
                 </Row>
 
                 <Row>
+                    <div className={styles.label}>
+                        Укажите пол
+                    </div>
                     <RadioGroup
-                        label="Укажите пол"
                         onChange={(_, payload: any) => {
                             formik.setFieldValue(payload.name, payload.value);
                         }}

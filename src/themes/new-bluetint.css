@@ -1,9 +1,45 @@
 :root {
+    --new-secondary: rgba(0, 0, 0, 0.64);
+
     /* BUTTON */
+
     --button-primary-base-bg-color: var(--color-light-bg-secondary-inverted);
-    --button-primary-hover-bg-color: var(--color-light-bg-secondary-inverted-tint-15);
-    --button-primary-active-bg-color: var(--color-light-bg-secondary-inverted-tint-20);
-    --button-primary-disabled-bg-color: var(--color-light-bg-secondary-inverted);
-    --button-primary-disabled-color: var(--color-light-text-tertiary-inverted-transparent);
-    --button-primary-color: var(--color-light-text-primary-inverted);
+    --button-primary-hover-bg-color: color-mod(#202022 blenda(black 15%));
+    --button-primary-active-bg-color: color-mod(#202022 blenda(black 30%));
+
+    /* FORM CONTROL & INPUT */
+
+    --form-control-label-color: rgba(0, 0, 0, 0.64);
+    --form-control-hint-color: rgba(0, 0, 0, 0.64);
+    --input-placeholder-color: rgba(0, 0, 0, 0.64);
+    --input-focus-placeholder-color: rgba(0, 0, 0, 0.4);
+    --input-with-label-placeholder-color: rgba(0, 0, 0, 0.4);
+    --select-arrow-color: rgba(0, 0, 0, 0.4);
+
+    /* TAG */
+
+    --tag-border-radius: 10px;
+    --tag-background-color: rgba(11, 31, 53, 0.1);
+    --tag-background-color-hover: color-mod(rgba(11, 31, 53, 0.1) blenda(black 4%));
+    --tag-background-color-active: color-mod(rgba(11, 31, 53, 0.1) blenda(black 7%));
+    --tag-background-color-checked: var(--color-light-bg-secondary-inverted);
+    --tag-background-color-checked-hover: color-mod(#202022 blenda(black 15%));
+    --tag-background-color-checked-active: color-mod(#202022 blenda(black 30%));
+    --tag-border-color: transparent;
+    --tag-border-color-hover: transparent;
+    --tag-border-color-active: transparent;
+    --tag-border-color-checked: transparent;
+    --tag-border-color-disabled: transparent;
+}
+
+[class*=input__input]:disabled {
+    -webkit-text-fill-color: rgba(0, 0, 0, 0.64);
+}
+
+[class*=form-control__filled] [class*=input__input]:disabled {
+    -webkit-text-fill-color: var(--color-light-text-primary);
+}
+
+[class*=select__placeholder] {
+    color: rgba(0, 0, 0, 0.64);
 }

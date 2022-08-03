@@ -9,5 +9,6 @@ module.exports = {
                 "custom-properties": false,
             },
         }),
+        require("postcss-color-mod-function"),
     ],
 };

@@ -1,3 +1,7 @@
+:root {
+    --new-secondary: rgba(11, 31, 53, 0.64);
+}
+
 .disableSwitch {
     margin-top: var(--gap-xs);
 }
@@ -13,13 +17,19 @@
 
     @media (min-width: 768px) {
         display: flex;
+        flex-wrap: wrap;
 
         & > * {
-            margin-left: var(--gap-xl);
+            flex-basis: 267px;
+            margin-right: var(--gap-xl);
             margin-top: 0;
 
-            &:first-child {
-                margin-left: 0;
+            &:last-child, &:only-child {
+                margin-right: 0;
+            }
+
+            &:only-child {
+                flex-basis: auto;
             }
         }
     }
@@ -31,6 +41,14 @@
     &.offset-large {
         margin-top: var(--gap-2xl);
     }
+}
+
+.label {
+    flex: 0 0 100%;
+    color: var(--new-secondary);
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0 0 6px;
 }
 
 input[class*=radio-group__hiddenInput] {
@@ -45,4 +63,8 @@ button[class*=link__component] {
     border-radius: 0;
     box-shadow: none;
     appearance: none;
+}
+
+[class*=link__text] {
+    border-bottom: 0;
 }

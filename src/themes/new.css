@@ -1,5 +1,17 @@
 :root {
-    /* FORM CONTROL */
+    /* BUTTON */
+
+    --button-primary-base-bg-color: var(--color-light-bg-accent);
+    --button-primary-hover-bg-color: var(--color-light-bg-accent-shade-7);
+    --button-primary-active-bg-color: var(--color-light-bg-accent-shade-15);
+    --button-secondary-base-bg-color: rgba(11, 31, 53, 0.1);
+    --button-secondary-hover-bg-color: color-mod(rgba(11, 31, 53, 0.1) blenda(black 4%));
+    --button-secondary-active-bg-color: color-mod(rgba(11, 31, 53, 0.1) blenda(black 7%));
+    --button-border-radius: 10px;
+    --button-active-transform: none;
+
+    /* FORM CONTROL & INPUT */
+
     --form-control-border-bottom: 0;
     --form-control-focus-border-bottom: 0;
     --form-control-error-border-bottom: 0;
@@ -9,8 +21,8 @@
 
     --form-control-border-radius: 10px;
 
-    --input-color: #0b1f35;
-    --form-control-color: #0b1f35;
+    --input-color: var(--color-light-text-primary);
+    --form-control-color: var(--color-light-text-primary);
 
     --form-control-bg-color: rgba(11, 31, 53, 0.1);
     --form-control-focus-bg-color: rgba(11, 31, 53, 0.07);
@@ -24,12 +36,33 @@
     --input-with-label-placeholder-color: rgba(11, 31, 53, 0.4);
 
     --form-control-disabled-bg-color: rgba(11, 31, 53, 0.1);
-    --form-control-disabled-color: #0b1f35;
+    --form-control-disabled-color: var(--color-light-text-primary);
+    --input-disabled-color: var(--color-light-text-primary);
 
     --form-control-error-shadow: none;
 
+    --form-control-error-shadow: inset 0 0 0 1px var(--color-light-border-accent);
+
     /* SELECT */
 
-    --select-options-list-offset: 8px;
+    --select-options-list-offset: 4px;
     --select-options-list-border-radius: 12px;
+    --select-options-list-box-shadow: var(--shadow-m);
+    --select-arrow-color: rgba(11, 31, 53, 0.4);
+}
+
+[class*=input__input]:disabled {
+    -webkit-text-fill-color: rgba(11, 31, 53, 0.64);
+}
+
+[class*=form-control__filled] [class*=input__input]:disabled {
+    -webkit-text-fill-color: var(--color-light-text-primary);
+}
+
+[class*=form-control__inner][class*=form-control__disabled] {
+    /* box-shadow: inset 0 0 0 1px rgba(11, 31, 53, 0.1); */
+}
+
+[class*=select__placeholder] {
+    color: rgba(11, 31, 53, 0.64);
 }

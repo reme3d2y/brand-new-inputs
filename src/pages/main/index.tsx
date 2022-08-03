@@ -22,7 +22,7 @@ export function MainPage() {
 
                 <Typography.Text view="primary-medium" tag="p" className={styles.text}>
                     Мы хотим протестировать несколько стилистических решений для инпутов. Возпользуйтесь{" "}
-                    <Link Component="button" view="default" onClick={() => setOpen(true)}>
+                    <Link Component="button" view="default" pseudo={true} onClick={() => setOpen(true)}>
                         панелью настроек
                     </Link>
                     , чтоб посмотреть как различные графические элементы влияют на восприятие формы. После
