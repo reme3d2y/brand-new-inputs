@@ -77,6 +77,7 @@ function App() {
 
             <Routes>
                 <Route path="/" element={<MainPage />} />
+                <Route path="/brand-new-inputs" element={<MainPage />} />
             </Routes>
         </AppContext.Provider>
     );
