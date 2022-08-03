@@ -32,3 +32,17 @@
         margin-top: var(--gap-2xl);
     }
 }
+
+input[class*=radio-group__hiddenInput] {
+    display: none;
+}
+
+button[class*=link__component] {
+    padding: 0;
+    font-size: inherit;
+    background-color: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    appearance: none;
+}

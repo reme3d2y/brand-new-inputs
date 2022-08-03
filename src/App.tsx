@@ -1,8 +1,10 @@
 import React, { useMemo, useState } from "react";
 import { hot } from "react-hot-loader/root";
+import { Routes, Route, Link } from "react-router-dom";
 import { MainPage } from "./pages/main";
 
 import click from "!!css-loader!postcss-loader!@alfalab/core-components/themes/click.css";
+import corp from "!!css-loader!postcss-loader!@alfalab/core-components/themes/corp.css";
 import mobile from "!!css-loader!postcss-loader!@alfalab/core-components/themes/mobile.css";
 import newTheme from "!!css-loader!postcss-loader!./themes/new.css";
 import newBluetintTheme from "!!css-loader!postcss-loader!./themes/new-bluetint.css";
@@ -17,6 +19,7 @@ export const defaultSettings: Settings = {
 
 const themes = {
     click,
+    corp,
     mobile,
     new: newTheme,
     newBluetint: newBluetintTheme,
@@ -72,7 +75,9 @@ function App() {
 
             {settings.colors === "bluetint" && <style>{bluetint}</style>}
 
-            <MainPage />
+            <Routes>
+                <Route path="/" element={<MainPage />} />
+            </Routes>
         </AppContext.Provider>
     );
 }

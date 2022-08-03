@@ -68,6 +68,7 @@ const config = {
         ],
     },
     devServer: {
+        historyApiFallback: true,
         static: {
             directory: "./dist",
         },
@@ -80,7 +81,7 @@ const config = {
                         <head>
                             <meta charset="utf-8">
                             <meta name="viewport" content="width=device-width,initial-scale=1">
-                            <title>Тест инпутов</title>
+                            <title>Тест</title>
                         </head>
                         <body><div id="app"></div></body>
                     </html>`,

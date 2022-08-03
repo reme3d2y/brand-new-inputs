@@ -27,8 +27,9 @@ export function SettingsPanel({ open = false, settings, onChange, onClose }: Pro
                         onChange={(_, payload) => onChange(payload as any)}
                         value={settings.theme}
                     >
-                        <Radio label="Core Default" value="default" />
-                        <Radio label="Alfa-Online" value="click" />
+                        <Radio label="Default" value="default" />
+                        <Radio label="Click" value="click" />
+                        <Radio label="Corp" value="corp" />
                         <Radio label="Mobile" value="mobile" />
                         <Radio label="New" value="new" />
                     </RadioGroup>
