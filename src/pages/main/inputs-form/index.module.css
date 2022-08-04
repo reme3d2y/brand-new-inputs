@@ -46,8 +46,8 @@
 .label {
     flex: 0 0 100%;
     color: var(--new-secondary);
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 14px;
+    line-height: 18px;
     margin: 0 0 -18px;
 
     @media (min-width: 768px) {
