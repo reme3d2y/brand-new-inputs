@@ -16,9 +16,12 @@
     --input-with-label-placeholder-color: rgba(0, 0, 0, 0.4);
     --select-arrow-color: rgba(0, 0, 0, 0.4);
 
+    --form-control-disabled-color: rgba(0, 0, 0, 0.64);
+    --input-disabled-color: rgba(0, 0, 0, 0.64);
+
     /* TAG */
 
-    --tag-border-radius: 10px;
+    --tag-border-radius: 8px;
     --tag-background-color: rgba(11, 31, 53, 0.1);
     --tag-background-color-hover: color-mod(rgba(11, 31, 53, 0.1) blenda(black 4%));
     --tag-background-color-active: color-mod(rgba(11, 31, 53, 0.1) blenda(black 7%));
@@ -36,8 +39,12 @@
     -webkit-text-fill-color: rgba(0, 0, 0, 0.64);
 }
 
+/* [class*=form-control__disabled] [class*=form-control__label] {
+    color: rgba(0, 0, 0, 0.64);
+} */
+
 [class*=form-control__filled] [class*=input__input]:disabled {
-    -webkit-text-fill-color: var(--color-light-text-primary);
+    -webkit-text-fill-color: rgba(0, 0, 0, 1);
 }
 
 [class*=select__placeholder] {

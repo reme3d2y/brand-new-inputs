@@ -33,7 +33,7 @@ export function WithNewStyles({ children }: Props) {
 
         return (
             <span className={styles.iconWithText}>
-                {<ErrorIcon />}
+                {/* {<ErrorIcon />} */}
                 {error}
             </span>
         );

@@ -17,6 +17,6 @@
     align-items: center;
 
     & > *:first-child {
-        margin-right: var(--gap-3xs);
+        margin-right: 4px;
     }
 }
