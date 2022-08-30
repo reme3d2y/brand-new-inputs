@@ -20,3 +20,28 @@
         margin-right: 4px;
     }
 }
+
+.addons {
+    font-size: 0;
+}
+
+.addons svg {
+    display: inline-block;
+    color: var(--input-with-label-placeholder-color);
+}
+
+:global([class*=form-control__rightAddons]) .addons svg {
+    margin-left: 8px;
+}
+
+:global([class*=form-control__leftAddons]) .addons svg {
+    margin-right: -4px;
+}
+
+:global([class*=form-control__disabled]) svg + :global(.calendar-icon) {
+    display: none;
+}
+
+:global([class*=input__errorIcon]) {
+    display: none;
+}

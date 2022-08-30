@@ -12,7 +12,7 @@ import newBluetintTheme from "!!css-loader!postcss-loader!./themes/new-bluetint.
 import bluetint from "@alfalab/core-components/vars/colors-bluetint";
 
 export const defaultSettings: Settings = {
-    theme: "default",
+    theme: "new",
     labelPosition: "inside",
     colors: "indigo",
 };

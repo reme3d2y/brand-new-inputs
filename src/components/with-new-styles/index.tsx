@@ -13,14 +13,14 @@ type Props = {
 export function WithNewStyles({ children }: Props) {
     const context = useContext(AppContext);
 
-    const { label, error, disabled } = children.props;
+    const { label, error, disabled, leftAddons, rightAddons } = children.props;
 
     const renderLabel = () => {
         if (context.settings.theme !== "new") return label;
 
         return (
             <span className={styles.iconWithText}>
-                {disabled && <LockIcon />}
+                {/* {disabled && <LockIcon />} */}
                 {label}
             </span>
         );
@@ -39,15 +39,48 @@ export function WithNewStyles({ children }: Props) {
         );
     };
 
+    const renderRightAddons = () => {
+        if (!rightAddons && !disabled) return null;
+
+        return (
+            <span className={styles.addons}>
+                {context.settings.colors === "indigo" && disabled && <LockIcon />}
+                {rightAddons}
+            </span>
+        );
+    };
+
+    const renderLeftAddons = () => {
+        if (!leftAddons && !disabled) return null;
+
+        return (
+            <span className={styles.addons}>
+                {context.settings.colors === "bluetint" && disabled && <LockIcon />}
+                {leftAddons}
+            </span>
+        );
+    };
+
     if (context.settings.labelPosition === "inside" && context.settings.theme !== "mobile")
-        return React.cloneElement(children, { label: renderLabel(), error: renderError() });
+        return React.cloneElement(children, {
+            label: renderLabel(),
+            error: renderError(),
+            rightAddons: renderRightAddons(),
+            leftAddons: renderLeftAddons()
+        }
+    );
 
     return (
         <label className={styles.wrapper}>
             <Typography.Text view="component" className={styles.label}>
                 {renderLabel()}
             </Typography.Text>
-            {React.cloneElement(children, { label: undefined, error: renderError() })}
+            {React.cloneElement(children, {
+                label: undefined,
+                error: renderError(),
+                rightAddons: renderRightAddons(),
+                leftAddons: renderLeftAddons()
+            })}
         </label>
     );
 }
