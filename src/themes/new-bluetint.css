@@ -50,3 +50,7 @@
 [class*=select__placeholder] {
     color: rgba(0, 0, 0, 0.64);
 }
+
+[class*=form-control__inner][class*=form-control__disabled] {
+    box-shadow: none;
+}

@@ -59,9 +59,9 @@
     -webkit-text-fill-color: rgba(11, 31, 53, 1);
 }
 
-/* [class*=form-control__inner][class*=form-control__disabled] {
+[class*=form-control__inner][class*=form-control__disabled] {
     box-shadow: inset 0 0 0 1px rgba(11, 31, 53, 0.05);
-} */
+}
 
 [class*=select__placeholder] {
     color: rgba(11, 31, 53, 0.64);
