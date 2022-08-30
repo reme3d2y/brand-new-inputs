@@ -51,7 +51,7 @@ export function WithNewStyles({ children }: Props) {
     };
 
     const renderLeftAddons = () => {
-        if (!leftAddons && !disabled) return null;
+        if (context.settings.colors === "indigo" || !disabled) return null;
 
         return (
             <span className={styles.addons}>
