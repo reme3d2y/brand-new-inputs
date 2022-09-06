@@ -27,7 +27,7 @@
 
 .addons svg {
     display: inline-block;
-    color: var(--input-with-label-placeholder-color);
+    color: var(--color-tertiary);
 }
 
 :global([class*=form-control__rightAddons]) .addons svg {
@@ -37,6 +37,14 @@
 :global([class*=form-control__leftAddons]) .addons svg {
     margin-right: -4px;
 }
+
+/* TEST */
+/* :global([class*=form-control__disabled]) svg {
+    color: var(--color-tertiary) !important;
+}
+:global([class*=form-control__disabled]) svg:first-child {
+    color: var(--color-disabled) !important;
+} */
 
 :global([class*=form-control__disabled]) svg + :global(.calendar-icon) {
     display: none;

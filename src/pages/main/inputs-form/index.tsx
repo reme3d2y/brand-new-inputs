@@ -228,7 +228,7 @@ export function InputsForm() {
                             disabled={!passportFieldsEnabled}
                             size={inputSize}
                             name="passportDate"
-                            rightAddons={<CalendarMIcon className='calendar-icon' style={{color: 'var(--form-control-label-color)'}} />}
+                            rightAddons={<CalendarMIcon className='calendar-icon' style={{color: 'var(--color-secondary)'}} />}
                             value={formik.values.passportDate}
                             onChange={(_, { value }) => formik.setFieldValue("passportDate", value)}
                             error={
@@ -249,7 +249,7 @@ export function InputsForm() {
                             disabled={!passportFieldsEnabled}
                             size={inputSize}
                             name="passportAddress"
-                            rightAddons={<InformationCircleMIcon style={{color: 'var(--form-control-label-color)'}} />}
+                            rightAddons={<InformationCircleMIcon style={{color: 'var(--color-secondary)'}} />}
                             value={formik.values.passportAddress}
                             onChange={formik.handleChange}
                             error={
