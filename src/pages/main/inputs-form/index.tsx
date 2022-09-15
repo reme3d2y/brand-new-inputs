@@ -249,7 +249,7 @@ export function InputsForm() {
                             disabled={!passportFieldsEnabled}
                             size={inputSize}
                             name="passportAddress"
-                            rightAddons={<InformationCircleMIcon style={{color: 'var(--color-secondary)'}} />}
+                            rightAddons={<InformationCircleMIcon className='calendar-icon' style={{color: 'var(--color-secondary)'}} />}
                             value={formik.values.passportAddress}
                             onChange={formik.handleChange}
                             error={
