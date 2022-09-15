@@ -44,18 +44,20 @@ export function WithNewStyles({ children }: Props) {
 
         return (
             <span className={styles.addons}>
-                {context.settings.colors === "indigo" && disabled && <LockIcon />}
+                {/* {context.settings.colors === "indigo" && disabled && <LockIcon />} */}
+                {disabled && <LockIcon />}
                 {rightAddons}
             </span>
         );
     };
 
     const renderLeftAddons = () => {
-        if (context.settings.colors === "indigo" || !disabled) return null;
+        // if (context.settings.colors === "indigo" || !disabled) return null;
+        return null;
 
         return (
             <span className={styles.addons}>
-                {context.settings.colors === "bluetint" && disabled && <LockIcon />}
+                {/* {context.settings.colors === "bluetint" && disabled && <LockIcon />} */}
                 {leftAddons}
             </span>
         );

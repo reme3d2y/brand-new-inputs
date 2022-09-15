@@ -42,12 +42,12 @@
 }
 
 [class*=form-control__filled] [class*=input__input]:disabled {
-    -webkit-text-fill-color: rgba(0, 0, 0, 1);
+    -webkit-text-fill-color: rgba(0, 0, 0, 0.64);
 }
 
-/* [class*=form-control__disabled] [class*=form-control__label] {
+[class*=form-control__disabled] [class*=form-control__label] {
     color: rgba(0, 0, 0, 0.4);
-} */
+}
 
 [class*=select__placeholder] {
     color: rgba(0, 0, 0, 0.64);
