@@ -45,7 +45,7 @@ export function WithNewStyles({ children }: Props) {
         return (
             <span className={styles.addons}>
                 {/* {context.settings.colors === "indigo" && disabled && <LockIcon />} */}
-                {disabled && <LockIcon />}
+                {context.settings.theme === "new" && disabled && <LockIcon />}
                 {rightAddons}
             </span>
         );
