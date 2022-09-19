@@ -39,10 +39,10 @@
 }
 
 /* TEST */
-/* :global([class*=form-control__disabled]) svg {
+:global([class*=form-control__disabled]) svg {
     color: var(--color-tertiary) !important;
 }
-:global([class*=form-control__disabled]) svg:first-child {
+/* :global([class*=form-control__disabled]) svg:first-child {
     color: var(--color-disabled) !important;
 } */
 
